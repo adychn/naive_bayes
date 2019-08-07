@@ -11,7 +11,7 @@
 import pandas as pd
 import numpy as np
 
-data_dir = "naive_bayes/email/input/"
+data_dir = "email/input/"
 
 df = pd.read_csv(data_dir + 'spam.csv', encoding='latin-1')
 # 编码相关阅读http://blog.csdn.net/robertcpp/article/details/7837712
