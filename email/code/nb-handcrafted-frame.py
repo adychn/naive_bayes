@@ -32,20 +32,28 @@ print (labels_train[:10])
 '''
     用一个dictionary保存词汇，并给每个词汇赋予唯一的id
 '''
+import time
 def GetVocabulary(data):
+    start_time = time.time()
     vocab_dict = {}
     wid = 0
+
+    word_list = []
     for document in data:
-        words = document.split()
-        for word in words:
-            word = word.lower()
-            if word not in vocab_dict:
-                vocab_dict[word] = wid
-                wid += 1
+        word_list += document.split()
+    words = set(word_list)
+
+    for word in words:
+        word = word.lower()
+        if word not in vocab_dict:
+            vocab_dict[word] = wid
+            wid += 1
+    print("--- %s seconds ---" % (time.time() - start_time))
     return vocab_dict
 
 vocab_dict = GetVocabulary(data_train)
 print(len(vocab_dict.keys()))
+ 
 
 # 把文章变成词向量
 # In[3]:
